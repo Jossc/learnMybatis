@@ -1,5 +1,8 @@
 package com.cpz.sql.session;
 
+import com.cpz.exception.QueryException;
+
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,7 +20,7 @@ public interface SqlSession<T> {
      * @param params      可变参数
      * @return
      */
-    public <T> List<T> selectList(String statementId, Object... params);
+    public <T> List<T> selectList(String statementId, Object... params) throws Exception;
 
 
     /**
@@ -28,5 +31,5 @@ public interface SqlSession<T> {
      * @param <T>
      * @return
      */
-    public <T> T selectOne(String statementId, Object... params);
+    public <T> T selectOne(String statementId, Object... params) throws Exception;
 }
