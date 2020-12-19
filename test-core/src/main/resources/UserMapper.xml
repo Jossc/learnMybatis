@@ -1,0 +1,14 @@
+<mapper namespace="com.cpz.test.dao.IUserDao">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="findAll" resultType="com.cpz.test.model.User">
+        select * from user
+    </select>
+
+
+    <select id="findByCondition" resultType="com.cpz.test.model.User" paramterType="com.cpz.test.model.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+
+</mapper>

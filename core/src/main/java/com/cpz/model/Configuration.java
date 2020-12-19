@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @createTime 2020年12月16日 22:38:00
  */
 @Data
-@Builder
 public class Configuration {
 
     private DataSource dataSource;

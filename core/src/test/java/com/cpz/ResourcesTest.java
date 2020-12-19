@@ -18,7 +18,7 @@ public class ResourcesTest {
 
     @Test
     public void testGetResourceInputStream() throws ResourceException {
-        String path = "src/main/java/com/cpz/io/LoadDataConfigResource.java";
+        String path = "LoadDataConfigResource.java";
         Resources resources = new LoadDataConfigResource();
         InputStream inputStream = resources.getResourceInputStream(path);
 

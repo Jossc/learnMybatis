@@ -29,7 +29,6 @@ public class SqlSessionFactoryBuilder {
         XMLConfigFactory<Configuration> XMLConfigFactory = new XMLConfigFactoryBuilder();
         final Configuration configuration = XMLConfigFactory.parseConfig(inputStream);
         log.debug("parseConfig configuration {}", configuration);
-        SqlSessionFactory sqlSessionFactory = new DefaultSqlSessionFactory(configuration);
-        return null;
+        return new DefaultSqlSessionFactory(configuration);
     }
 }
