@@ -44,6 +44,7 @@ public class DefaultSqlSession<T> implements SqlSession {
         if (selectList.size() == 1) {
             return selectList.get(0);
         } else {
+            // todo 需要换成自定义异常·
             throw new RuntimeException();
         }
     }

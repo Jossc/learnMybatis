@@ -8,6 +8,7 @@ import com.cpz.io.LoadDataConfigResource;
 import com.cpz.io.Resources;
 import com.cpz.model.Configuration;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.dom4j.Document;
@@ -47,15 +48,23 @@ public class XMLConfigFactoryBuilder implements XMLConfigFactory<Configuration> 
                     properties.setProperty(name, value);
                 });
                 log.debug("parseConfig properties {} ", properties);
+
+             /*   HikariConfig config = new HikariConfig();
+                config.setUsername((String) properties.get("username"));
+                config.setPassword((String) properties.get("passWord"));
+                config.setJdbcUrl((String) properties.get("jdbcUrl"));
+                config.setDriverClassName((String) properties.get("driverClass"));
+                HikariPool hikariPool = new HikariPool(config);*/
                 ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
                 comboPooledDataSource.setDriverClass((String) properties.get("driverClass"));
                 comboPooledDataSource.setJdbcUrl((String) properties.get("jdbcUrl"));
                 comboPooledDataSource.setUser((String) properties.get("username"));
                 comboPooledDataSource.setPassword((String) properties.get("passWord"));
                 parseConfig.setDataSource(comboPooledDataSource);
+            /*    parseConfig.setHikariPool(hikariPool);*/
                 parseMapperXml(rootElement, parseConfig);
             }
-        } catch (DocumentException | PropertyVetoException e) {
+        } catch (Exception e) {
             log.error("parse Config error", e);
             throw new ParseConfigException("parseConfig error");
         }

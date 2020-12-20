@@ -27,8 +27,9 @@ public class SessionTest {
         LoadDataConfigResource loadDataConfigResource = new LoadDataConfigResource();
         InputStream inputStream =
                 loadDataConfigResource.getResourceInputStream("sqlMapConfig.xml");
-        SqlSessionFactory sqlSessionFactory
-                = new SqlSessionFactoryBuilder().buildSqlSessionFactory(inputStream);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().buildSqlSessionFactory(inputStream);
+
+
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         List<User> userList = sqlSession.selectList("com.cpz.test.dao.IUserDao.findAll", null);

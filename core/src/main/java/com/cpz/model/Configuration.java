@@ -1,5 +1,6 @@
 package com.cpz.model;
 
+
 import lombok.Builder;
 import lombok.Data;
 

@@ -91,7 +91,8 @@ public class DefaultExecutor implements Executor {
     private Class<?> getClassType(String parameterType) throws ClassNotFoundException {
         log.debug("getClassType parameterType {}", parameterType);
         if (Objects.isNull(parameterType)) {
-            throw new RuntimeException();
+            log.warn("parameterType is null ");
+            return null;
         }
         return Class.forName(parameterType);
     }
@@ -110,24 +111,24 @@ public class DefaultExecutor implements Executor {
             throw new RuntimeException();
         }
         Class<?> resultType = getClassType(classPath);
-        final Object newInstance = resultType.newInstance();
-        List<T> result = new ArrayList<>();
+        List<Object> result = new ArrayList<>();
         /**
          *  获取元数据
          *  把指写到对象中
          */
         while (resultSet.next()) {
+            final Object newInstance = resultType.newInstance();
             final ResultSetMetaData metaData = resultSet.getMetaData();
             for (int i = 1; i <= metaData.getColumnCount(); i++) {
                 final String columnName = metaData.getColumnName(i);
                 Object value = resultSet.getObject(columnName);
-                PropertyDescriptor propertyDescriptor =
-                        new PropertyDescriptor(columnName, resultType);
+                PropertyDescriptor propertyDescriptor = new PropertyDescriptor(columnName, resultType);
                 Method method = propertyDescriptor.getWriteMethod();
                 method.invoke(newInstance, value);
             }
-            result.add((T) newInstance);
+            System.err.println(newInstance);
+            result.add(newInstance);
         }
-        return result;
+        return (List<T>) result;
     }
 }

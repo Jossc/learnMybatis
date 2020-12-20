@@ -2,10 +2,10 @@
 
     <!--数据库配置信息-->
     <dataSource>
-        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="useUnicode=true&amp;characterEncoding=utf-8"></property>
-        <property name="username" value="root"></property>
-        <property name="password" value="eo94zxTk"></property>
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="jdbcUrl" value=""></property>
+        <property name="username" value="xxy"></property>
+        <property name="passWord" value="xxy123"></property>
     </dataSource>
 
     <!--存放mapper.xml的全路径-->

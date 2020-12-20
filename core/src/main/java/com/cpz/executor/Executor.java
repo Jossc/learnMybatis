@@ -3,7 +3,6 @@ package com.cpz.executor;
 import com.cpz.model.Configuration;
 import com.cpz.model.MappedStatement;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -26,5 +25,5 @@ public interface Executor {
      */
     public <T> List<T> query(Configuration configuration,
                              MappedStatement mappedStatement,
-                             Object... params) throws SQLException, ClassNotFoundException, Exception;
+                             Object... params) throws Exception;
 }
